@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "apollo-link-http": "^1.5.17",
-    "shards-react": "^1.0.3"
-  }
-}
