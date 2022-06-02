@@ -1,0 +1,16 @@
+{
+  "name": "chat-server-gql",
+  "version": "0.0.1",
+  "main": "./src/index.js",
+  "author": "soraiavmv",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "server": "node ./src/index.js"
+  },
+  "dependencies": {
+    "@graphql-yoga/node": "^2.8.0",
+    "dotenv": "^16.0.1",
+    "graphql": "^16.5.0"
+  }
+}
