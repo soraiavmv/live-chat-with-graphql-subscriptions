@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@graphql-yoga/node": "^2.8.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
     "nodemon": "^2.0.16"

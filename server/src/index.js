@@ -48,12 +48,17 @@ const resolvers = {
 
 const startServer = async () => {
   const server = createServer({
+    cors: {
+      origin: '*',
+      methods: ['POST', 'GET'],
+    },
     port,
     schema: {
       typeDefs,
       resolvers
     },
   });
+  
   await server.start();
 }
 

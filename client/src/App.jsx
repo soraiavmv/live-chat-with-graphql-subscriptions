@@ -1,23 +1,23 @@
-import './App.css';
 import ChatBox from './components/chat-box';
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider
+  ApolloProvider,
+  HttpLink
 } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  link: new HttpLink({
+    uri: 'http://localhost:4000/graphql',
+  }),
   cache: new InMemoryCache()
 });
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <div className="App">
+      <ApolloProvider client={client}>
         <ChatBox />
-      </div>
-    </ApolloProvider>
+      </ApolloProvider>
   );
 }
 
