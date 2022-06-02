@@ -5,8 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "server": "nodemon ./src/server/index.js",
-    "client": "webpack-dev-server --mode=development --open --hot"
+    "server": "nodemon ./src/index.js"
   },
   "dependencies": {
     "@graphql-yoga/node": "^2.8.0",
