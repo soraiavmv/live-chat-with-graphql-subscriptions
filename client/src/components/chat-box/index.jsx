@@ -4,12 +4,12 @@ import { useSubscription, useQuery } from '@apollo/client';
 import { getMessagesSubscription, getMessagesQuery } from './util';
 
 const ChatBox = () => {
-  const [messagesToShow, setMessagesToShow] = useState([]);
+  const [messagesToShow, setMessagesToShow] = useState();
   const { data: queriedMessages } = useQuery(getMessagesQuery);
   const { data } = useSubscription(getMessagesSubscription);
 
   useEffect(() => {
-    if (queriedMessages?.messages && messagesToShow.length === 0) {
+    if (queriedMessages?.messages && !messagesToShow) {
       setMessagesToShow(queriedMessages.messages);
       return;
     }
@@ -17,7 +17,7 @@ const ChatBox = () => {
     if (data?.messages) {
       setMessagesToShow(data.messages)
     }
-  }, [data, messagesToShow.length, queriedMessages]);
+  }, [data, messagesToShow, queriedMessages]);
 
   return (
     <div>

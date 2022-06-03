@@ -1,6 +1,6 @@
 import { createPubSub } from '@graphql-yoga/node';
 
-const messages = []; // TODO:: use DB in the future
+const messages = []; // TODO:: use DB in the future; using array for simplicity
 const pubSub = createPubSub();
 
 export const resolvers = {
@@ -22,10 +22,7 @@ export const resolvers = {
   },
   Subscription: {
     messages: {
-      subscribe: () => {
-        console.log('subscrito!')
-        return pubSub.subscribe('post')
-      },
+      subscribe: () => pubSub.subscribe('post'),
       resolve: () =>  messages,
     },
   },
