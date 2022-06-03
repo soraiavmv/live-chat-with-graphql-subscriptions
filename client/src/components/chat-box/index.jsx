@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Message from '../message';
+import MessageInput from '../input';
 import { useSubscription, useQuery } from '@apollo/client';
-import { getMessagesSubscription, getMessagesQuery } from './util';
+import { getMessagesSubscription, getMessagesQuery } from './gql';
 
-const ChatBox = () => {
+const ChatBox = ({ username }) => {
   const [messagesToShow, setMessagesToShow] = useState();
   const { data: queriedMessages } = useQuery(getMessagesQuery);
   const { data } = useSubscription(getMessagesSubscription);
@@ -23,8 +24,13 @@ const ChatBox = () => {
     <div>
       {messagesToShow &&
         messagesToShow.map((message, index) => (
-          <Message key={`message-${index}`} message={message} />)
+          <Message
+            key={`message-${index}`}
+            message={message}
+            isSelf={username === message.user}
+          />)
         )}
+      <MessageInput username={username} />
     </div>
   );
 };
