@@ -26,9 +26,7 @@ export const resolvers = {
         console.log('subscrito!')
         return pubSub.subscribe('post')
       },
-      resolve: () => {
-        return messages;
-      },
+      resolve: () =>  messages,
     },
   },
 };

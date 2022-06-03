@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Message from '../message';
-import { useQuery } from '@apollo/client';
-import { getMessages } from './util';
+import { useSubscription, useQuery } from '@apollo/client';
+import { getMessagesSubscription, getMessagesQuery } from './util';
 
 const ChatBox = () => {
-  const { data } = useQuery(getMessages);
+  const [messagesToShow, setMessagesToShow] = useState([]);
+  const { data: queriedMessages } = useQuery(getMessagesQuery);
+  const { data } = useSubscription(getMessagesSubscription);
+
+  useEffect(() => {
+    if (queriedMessages?.messages && messagesToShow.length === 0) {
+      setMessagesToShow(queriedMessages.messages);
+      return;
+    }
+
+    if (data?.messages) {
+      setMessagesToShow(data.messages)
+    }
+  }, [data, messagesToShow.length, queriedMessages]);
 
   return (
     <div>
-      {data && data.messages &&
-        data.messages.map((message, index) => (
+      {messagesToShow &&
+        messagesToShow.map((message, index) => (
           <Message key={`message-${index}`} message={message} />)
         )}
     </div>
