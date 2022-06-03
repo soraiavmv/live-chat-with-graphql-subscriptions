@@ -7,10 +7,6 @@ const port = config.gqlServer.port;
 
 const startServer = async () => {
   const server = createServer({
-    cors: {
-      origin: '*',
-      methods: ['POST', 'GET'],
-    },
     port,
     schema: {
       typeDefs,
@@ -18,7 +14,7 @@ const startServer = async () => {
     },
   });
 
-  await server.start();
+await server.start();
 }
 
 void startServer()

@@ -12,4 +12,8 @@ export const typeDefs = `
   type Mutation {
     newMessage(user: String!, content: String!): ID!
   }
+
+  type Subscription {
+    messages: [Message!]
+  }
 `;
