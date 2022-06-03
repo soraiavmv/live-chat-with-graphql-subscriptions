@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useMutation } from '@apollo/client';
 import { postNewMessage } from './gql';
+import './styles.css';
 
 const MessageInput = ({ username }) => {
   const [postMessage] = useMutation(postNewMessage);
@@ -21,7 +22,7 @@ const MessageInput = ({ username }) => {
   }, [messageContent, postMessage, username]);
 
   return (
-    <div>
+    <div className='message-input-container'>
       <input
         label="message-content"
         value={messageContent}
@@ -33,8 +34,9 @@ const MessageInput = ({ username }) => {
             sendMessage();
           }
         }}
+        className='message-input'
       />
-      <button onClick={sendMessage}>Send</button>
+      <button className='send-button' onClick={sendMessage}>Send</button>
     </div>
   )
 }

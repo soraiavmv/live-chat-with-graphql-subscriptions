@@ -6,7 +6,7 @@ const Message = ({ message, isSelf }) => {
 
   return (
     <div
-      className='container'
+      className='message-container'
       style={{
         justifyContent: isSelf ? 'flex-end' : 'flex-start'
       }}
@@ -23,7 +23,7 @@ const Message = ({ message, isSelf }) => {
           color: isSelf ? 'white' : 'black',
         }}
       >
-        {content}
+        <p className='message-text'>{content}</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-.container {
+.message-container {
   display: flex;
   align-items: center;
   padding-bottom: 1em;
@@ -22,4 +22,9 @@
   border-radius: 2em;
   max-width: 50%;
   min-width: 20%;
+  flex-wrap: nowrap;
+}
+
+.message-text {
+  word-wrap:break-word;
 }
