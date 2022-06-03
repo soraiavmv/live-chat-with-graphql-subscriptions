@@ -8,6 +8,7 @@
     "server": "nodemon ./src/index.js"
   },
   "dependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
     "@graphql-yoga/node": "^2.8.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
