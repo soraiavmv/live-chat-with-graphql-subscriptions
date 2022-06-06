@@ -34,7 +34,7 @@ const startServer = async () => {
       subscribe: (args) => args.rootValue.subscribe(args),
       onSubscribe: async (ctx, msg) => {
         const { schema, execute, subscribe, contextFactory, parse, validate } =
-          server.getEnveloped(ctx)
+          server.getEnveloped(ctx);
 
         const args = {
           schema,
@@ -46,17 +46,17 @@ const startServer = async () => {
             execute,
             subscribe,
           },
-        }
+        };
 
-        const errors = validate(args.schema, args.document)
+        const errors = validate(args.schema, args.document);
         if (errors.length) return errors
         
-        return args
+        return args;
       },
     },
     wsServer,
-  )
-}
+  );
+};
 
 void startServer()
   .then(() => console.log(`👂 GQL Server listening on  http://localhost:${port}/ 👂`))
